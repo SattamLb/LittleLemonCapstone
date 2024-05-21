@@ -4,12 +4,12 @@
 //
 //  Created by Sattam Bandar Albogami on 12/11/1445 AH.
 //
-
 import SwiftUI
 
 let kFirstName = "first name key"
 let KLastName = "last name key"
 let KEmail = "email key"
+let kIsLoggedIn = "kIsLoggedIn"
 
 struct Onboarding: View {
     @State var first_name = ""
@@ -21,8 +21,15 @@ struct Onboarding: View {
         NavigationView { // Wrap the VStack in a NavigationView
             VStack {
                 TextField("First Name ", text: $first_name)
-                TextField("Last NAme ", text: $last_name)
+                    .textFieldStyle(RoundedBorderTextFieldStyle())
+                    .padding()
+                TextField("Last Name ", text: $last_name)
+                    .textFieldStyle(RoundedBorderTextFieldStyle())
+                    .padding()
                 TextField("Email ", text: $email)
+                    .textFieldStyle(RoundedBorderTextFieldStyle())
+                    .padding()
+
                 NavigationLink(destination: Home(), isActive: $isLoggedIn) {
                     EmptyView()
                 }
@@ -32,14 +39,21 @@ struct Onboarding: View {
                         UserDefaults.standard.set(first_name, forKey: kFirstName)
                         UserDefaults.standard.set(last_name, forKey: KLastName)
                         UserDefaults.standard.set(email, forKey: KEmail)
+                        UserDefaults.standard.set(true, forKey: kIsLoggedIn)
                         
                         isLoggedIn = true
                     } else {
                        
                     }
                 }
+                .padding()
             }
             .navigationTitle("Registration")
+            .onAppear {
+                if UserDefaults.standard.bool(forKey: kIsLoggedIn) {
+                    isLoggedIn = true
+                }
+            }
         }
     }
 }
