@@ -18,7 +18,7 @@ struct Onboarding: View {
     @State private var isLoggedIn = false // State variable to control navigation
 
     var body: some View {
-        NavigationView { // Wrap the VStack in a NavigationView
+        NavigationView { 
             VStack {
                 TextField("First Name ", text: $first_name)
                     .textFieldStyle(RoundedBorderTextFieldStyle())

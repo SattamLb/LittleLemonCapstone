@@ -7,6 +7,8 @@
 import SwiftUI
 
 struct UserProfile: View {
+    
+   
     let firstName = UserDefaults.standard.string(forKey: kFirstName) ?? ""
     let lastName = UserDefaults.standard.string(forKey: KLastName) ?? ""
     let email = UserDefaults.standard.string(forKey: KEmail) ?? ""

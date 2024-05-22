@@ -73,7 +73,7 @@ struct Menu: View {
         }
         .onAppear {
             if !loaded {
-                MenuList.getMenuData(viewContext: viewContext)
+                Menulist.getMenuData(viewContext: viewContext)
                 loaded = true
             }
         }
